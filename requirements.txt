@@ -2,4 +2,4 @@ matplotlib
 numpy
 scipy
 streamlit
-millifi
+millify
