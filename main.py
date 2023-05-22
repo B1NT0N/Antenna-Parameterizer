@@ -17,7 +17,7 @@ def FLD(x):
     f = 10 * 10**6
     wl = v/f
     k = (2*cmath.pi)/wl
-    l = x
+    l = x*wl
     k=(2*cmath.pi)/wl
 
 
@@ -51,25 +51,29 @@ def FLD(x):
 
     # Plot of the 3D Mesh
     fig = plt.figure()
-    ax = fig.add_subplot(2, 2, 1, projection='3d')
+    ax = fig.add_subplot(3, 3, 1, projection='3d')
     ax.plot_surface(x, y, z, cmap="magma")
+    ax.set_title('3D Plot')
 
     #Diagrama de Radiacao 2D
     #Plano XY
     new2_theta = math.pi/2
     new2_U_n = eta * ((abs(I_0)**2)/(8*cmath.pi**2))*((np.cos(((k*l)/2)*np.cos(new2_theta))-np.cos(((k*l)/2)))/np.sin(new2_theta))**2
-    ax = fig.add_subplot(2, 2, 2, projection='polar')
+    ax = fig.add_subplot(3, 3, 3, projection='polar')
     ax.plot(phi, np.ones(phi.size)*new2_U_n)
+    ax.set_title('XY Plane')
 
     new2_phi = math.pi;
-    new3_U_n = eta * ((abs(I_0)**2)/(8*cmath.pi**2))*((np.cos(((k*l)/2)*np.cos(new_theta))-np.cos(((k*l)/2)))/np.sin(new_theta))**2
-    ax = fig.add_subplot(2, 2, 3, projection='polar')
+    new3_U_n = eta * ((abs(I_0)**2)/(8*cmath.pi**2))*((np.cos(((k*l)/2)*np.cos(theta))-np.cos(((k*l)/2)))/np.sin(theta))**2
+    ax = fig.add_subplot(3, 3, 7, projection='polar')
     ax.plot(theta, new3_U_n)
+    ax.set_title('YX Plane')
 
     new2_phi = 0;
-    new3_U_n = eta * ((abs(I_0)**2)/(8*cmath.pi**2))*((np.cos(((k*l)/2)*np.cos(new_theta))-np.cos(((k*l)/2)))/np.sin(new_theta))**2
-    ax = fig.add_subplot(2, 2, 4, projection='polar')
+    new3_U_n = eta * ((abs(I_0)**2)/(8*cmath.pi**2))*((np.cos(((k*l)/2)*np.cos(theta))-np.cos(((k*l)/2)))/np.sin(theta))**2
+    ax = fig.add_subplot(3, 3,9, projection='polar')
     ax.plot(theta, new3_U_n)
+    ax.set_title('ZX Plane')
 
     return D_0, P_rad, A_em, R_r, R_in, fig
 
@@ -83,7 +87,7 @@ def ID(x):
     f = 10 * 10**6
     wl = v/f
     k = (2*cmath.pi)/wl
-    l = x
+    l = x*wl
     k=(2*cmath.pi)/wl
 
     U = ((eta/2)*((k*I_0*l)/(4*cmath.pi))**2)*np.sin(theta)
@@ -107,27 +111,31 @@ def ID(x):
 
     # Plot of the 3D Mesh
     fig = plt.figure()
-    ax = fig.add_subplot(2, 2, 1, projection='3d')
+    ax = fig.add_subplot(3, 3, 1, projection='3d')
     ax.plot_surface(x, y, z, cmap="magma")
+    ax.set_title('3D Plot')
 
     #Diagrama de Radiacao 2D
 
     #Plano XY
     new2_theta = math.pi/2
     new2_U_n = ((eta/2)*((k*I_0*l)/(4*cmath.pi))**2)*np.sin(new2_theta)
-    ax = fig.add_subplot(2, 2, 2, projection='polar')
+    ax = fig.add_subplot(3, 3, 3, projection='polar')
     ax.plot(phi, np.ones(phi.size)*new2_U_n)
+    ax.set_title('XY Plane')
 
 
     new2_phi = math.pi;
     new3_U_n = ((eta/2)*((k*I_0*l)/(4*cmath.pi))**2)*np.sin(theta)
-    ax = fig.add_subplot(2, 2, 3, projection='polar')
+    ax = fig.add_subplot(3, 3, 7, projection='polar')
     ax.plot(theta, new3_U_n)
+    ax.set_title('YX Plane')
 
     new2_phi = 0;
     new3_U_n = ((eta/2)*((k*I_0*l)/(4*cmath.pi))**2)*np.sin(theta)
-    ax = fig.add_subplot(2, 2, 4, projection='polar')
+    ax = fig.add_subplot(3, 3, 9, projection='polar')
     ax.plot(theta, new3_U_n)
+    ax.set_title('ZX Plane')
 
     return D_0, P_rad, A_em, R_r, R_in, fig
 
@@ -142,7 +150,7 @@ def SD(x):
     f = 10 * 10**6
     wl = v/f
     k = (2*cmath.pi)/wl
-    l = x
+    l = x*wl
     k=(2*cmath.pi)/wl
 
     r = (k*l)/2
@@ -166,27 +174,31 @@ def SD(x):
 
     # Plot of the 3D Mesh
     fig = plt.figure()
-    ax = fig.add_subplot(2, 2, 1, projection='3d')
+    ax = fig.add_subplot(3, 3, 1, projection='3d')
     ax.plot_surface(x, y, z, cmap="magma")
+    ax.set_title('3D Plot')
 
     #Diagrama de Radiacao 2D
 
     #Plano XY
     new2_theta = math.pi/2
     new2_U_n = C1*np.sin(new2_theta)
-    ax = fig.add_subplot(2, 2, 2, projection='polar')
+    ax = fig.add_subplot(3, 3, 3, projection='polar')
     ax.plot(phi, np.ones(phi.size)*new2_U_n)
+    ax.set_title('XY Plane')
 
 
     new2_phi = math.pi;
-    new3_U_n = C1*np.sin(new_theta)
-    ax = fig.add_subplot(2, 2, 3, projection='polar')
+    new3_U_n = C1*np.sin(theta)
+    ax = fig.add_subplot(3, 3, 7, projection='polar')
     ax.plot(theta, new3_U_n)
+    ax.set_title('YZ Plane')
 
     new2_phi = 0;
-    new3_U_n = C1*np.sin(new_theta)
-    ax = fig.add_subplot(2, 2, 4, projection='polar')
+    new3_U_n = C1*np.sin(theta)
+    ax = fig.add_subplot(3, 3, 9, projection='polar')
     ax.plot(theta, new3_U_n)
+    ax.set_title('ZX Plane')
 
     return D_0, 0, A_em, R_r, R_in, fig
 
@@ -202,21 +214,24 @@ st.write('')
 col1,col2 = st.columns([0.3,1])
 
 with col1:
-    x = st.slider(label='Choose a value for $l$', min_value=0.0, max_value=4.0, value=0.5, step=0.001,)
+    x = st.slider(label='Choose a value for $l$', min_value=0.0, max_value=4.0, value=0.504, step=0.001,)
 
     v = 3 * 10**8
     f = 10 * 10**6
     wl = v/f
     k = (2*cmath.pi)/wl
-    l = x
+    l = x*wl
 
 
     if l>wl/50 and l<wl/10:
         st.info("SMALL DIPOLE",)
+        st.latex(f"\\frac{{wl}}{{50}} < {l} < \\frac{{wl}}{{10}}, wl = {wl}")
     elif l < wl/50:
         st.info("INFINITESIMAL DIPOLE",)
+        st.latex(f"{l} < \\frac{{wl}}{{50}}, wl = {wl}")
     elif l > wl/10:
         st.info("FINITE LENGTH DIPOLE",)
+        st.latex(f"{l} > \\frac{{wl}}{{10}}, wl = {wl}")
         
    
 with col2:
@@ -224,21 +239,20 @@ with col2:
     f = 10 * 10**6
     wl = v/f
     k = (2*cmath.pi)/wl
-    l = x
+    l = x*wl
 
     if l>wl/50 and l<wl/10:
         D_0, P_rad, A_em, R_r, R_in, fig = SD(x)
-    elif l < wl/50:
+    elif l <= wl/50:
         D_0, P_rad, A_em, R_r, R_in, fig = ID(x)
-    elif l>wl/10:
+    elif l >= wl/10:
         D_0, P_rad, A_em, R_r, R_in, fig = FLD(x)
     
-    print(wl)
     col1, col2, col3, col4, col5 = st.columns(5)
     col1.metric("$D_0$", f"{millify(D_0, precision=2)}")
     col2.metric("$A_{em}$", f"{millify(A_em, precision=2)} m2")
     col3.metric("$R_r$", f"{millify(R_r, precision=2)} Ω")
     col4.metric("$R_{in}$", f"{millify(R_in, precision=2)} Ω")
-    col5.metric("$P_{rad}$", f"{millify(P_rad, precision=2)} W")
+    col5.metric("$P_{rad}$", f"{millify(P_rad, precision=2) if P_rad !=0 else '?'} W")
     st.pyplot(fig=fig)
 
