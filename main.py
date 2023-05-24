@@ -214,7 +214,7 @@ st.write('')
 col1,col2 = st.columns([0.3,1])
 
 with col1:
-    x = st.slider(label='Choose a value for $l$', min_value=0.0, max_value=4.0, value=0.504, step=0.001,)
+    x = st.slider(label='Choose a value for $l$', min_value=0.0, max_value=2.0, value=0.504, step=0.001, format="%f")
 
     v = 3 * 10**8
     f = 10 * 10**6
